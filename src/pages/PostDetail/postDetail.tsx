@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import './postDetail.scss';
+import { useEffect } from 'react';
+import './PostDetail.scss';
 
-const PostDetail: React.FC = () => {
+const PostDetail = () => {
 
     useEffect(() => {
     }, []);

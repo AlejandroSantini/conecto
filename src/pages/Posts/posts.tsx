@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getPosts } from '../../service/postsService.tsx';
-import type { Post } from '../../types';
-import './posts.scss';
+import type { Post } from '../../types/index.ts';
+import './Posts.scss';
+import PostCard from '../../components/PostCard/PostCard.tsx';
 
-const PostsPage: React.FC = () => {
+const PostsPage = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -23,7 +24,7 @@ const PostsPage: React.FC = () => {
     }
   };
 
-  //     {
+    //   {
     //     "createdAt": "2025-08-04T21:19:45.386Z",
     //     "name": "Ottis2",
     //     "avatar": "https://cdn.jsdelivr.net/gh/faker-js/assets-person-portrait/female/512/13.jpg",
@@ -40,21 +41,14 @@ const PostsPage: React.FC = () => {
       ) : (
         <div className="posts-grid">
           {posts.map(post => (
-            <div className="card" key={post.id}>
-              <img
-                className="avatar"
-                src={post.avatar}
-                alt={post.name}
-              />
-              <div className="card-content">
-                <h3 className="card-title">{post.title}</h3>
-                <p className="card-text">{post.content}</p>
-                <div className="card-footer">
-                  <span className="card-author">By: {post.name}</span>
-                  <span className="card-date">{new Date(post.createdAt).toLocaleString()}</span>
-                </div>
-              </div>
-            </div>
+            <PostCard
+              key={post.id}
+              avatar={post.avatar}
+              name={post.name}
+              title={post.title}
+              content={post.content}
+              createdAt={post.createdAt}
+            />
           ))}
         </div>
       )}
