@@ -40,6 +40,7 @@ const PostsPage = () => {
                     {posts.map((post) => (
                         <div key={post.id} style={{ cursor: 'pointer' }} onClick={() => navigate(`/post/${post.id}`)}>
                             <PostCard
+                                id={post.id}
                                 avatar={post.avatar}
                                 name={post.name}
                                 title={post.title}

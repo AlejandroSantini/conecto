@@ -11,7 +11,8 @@
 
   .header {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    align-items: start;
     gap: 1.5rem;
 
     .avatar {
@@ -53,7 +54,7 @@
       align-items: flex-start;
     }
   }
-  
+
   .content {
     color: #e1e1e1;
     font-size: 1rem;

@@ -1,0 +1,22 @@
+.delete-btn {
+  background: #fbe9ea;
+  border: none;
+  cursor: pointer;
+  padding: 0.65rem;
+  border-radius: 0.5rem;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e11d48;
+
+  &:hover:not(:disabled) {
+    background: #e11d48;
+    color: #fff;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
