@@ -1,5 +1,5 @@
-import axios from 'axios';
-import type { Post, Comment } from '../types';
+import axios from "axios";
+import type { Post, Comment } from "../types";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -24,16 +24,29 @@ export const deletePost = async (postId: string): Promise<Post> => {
 };
 
 export const getComments = async (postId: string): Promise<Comment[]> => {
-  const { data } = await axios.get<Comment[]>(`${API_URL}/post/${postId}/comment`);
+  const { data } = await axios.get<Comment[]>(
+    `${API_URL}/post/${postId}/comment`,
+  );
   return data;
 };
 
-export const createComment = async (postId: string, comment: Partial<Comment>): Promise<Comment> => {
-  const { data } = await axios.post<Comment>(`${API_URL}/post/${postId}/comment`, comment);
+export const createComment = async (
+  postId: string,
+  comment: Partial<Comment>,
+): Promise<Comment> => {
+  const { data } = await axios.post<Comment>(
+    `${API_URL}/post/${postId}/comment`,
+    comment,
+  );
   return data;
 };
 
-export const deleteComment = async (postId: string, commentId: string): Promise<Comment> => {
-  const { data } = await axios.delete<Comment>(`${API_URL}/post/${postId}/comment/${commentId}`);
+export const deleteComment = async (
+  postId: string,
+  commentId: string,
+): Promise<Comment> => {
+  const { data } = await axios.delete<Comment>(
+    `${API_URL}/post/${postId}/comment/${commentId}`,
+  );
   return data;
 };

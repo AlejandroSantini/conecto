@@ -1,4 +1,4 @@
-import './PostCard.scss';
+import "./PostCard.scss";
 
 type PostCardProps = {
   avatar: string;
@@ -8,7 +8,13 @@ type PostCardProps = {
   createdAt: string;
 };
 
-const PostCard = ({ avatar, name, title, content, createdAt }: PostCardProps) => (
+const PostCard = ({
+  avatar,
+  name,
+  title,
+  content,
+  createdAt,
+}: PostCardProps) => (
   <div className="card">
     <img className="avatar" src={avatar} alt={name} />
     <div className="content">

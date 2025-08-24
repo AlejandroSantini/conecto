@@ -1,18 +1,14 @@
-import { useEffect } from 'react';
-import './PostDetail.scss';
+import { useEffect } from "react";
+import "./PostDetail.scss";
 
 const PostDetail = () => {
+  useEffect(() => {}, []);
 
-    useEffect(() => {
-    }, []);
-    
-    
-    return (
-        <div className="post-detail">
-        <h1>Post Detail</h1>
-        
-        </div>
-    );
-}
+  return (
+    <div className="post-detail">
+      <h1>Post Detail</h1>
+    </div>
+  );
+};
 
 export default PostDetail;
