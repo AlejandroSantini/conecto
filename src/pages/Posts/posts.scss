@@ -1,19 +1,19 @@
 .posts-container {
-  min-height: 100vh;
-  padding: 2rem 1rem;
+    min-height: 100vh;
+    padding: 2rem 1rem;
 }
 
 .posts-title {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 2rem;
-  color: #242424;
-  text-align: left;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #242424;
+    text-align: left;
 }
 
 .posts-grid {
-  max-width: 640px;
-  margin: 0 auto;
-  display: grid;
-  gap: 1.5rem;
+    max-width: 640px;
+    margin: 0 auto;
+    display: grid;
+    gap: 1.5rem;
 }

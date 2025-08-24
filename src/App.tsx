@@ -1,17 +1,17 @@
-import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import PostsPage from "./pages/Posts/posts";
-import PostDetail from "./pages/PostDetail/postDetail";
+import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import PostsPage from './pages/Posts/Posts';
+import PostDetail from './pages/PostDetail/PostDetail';
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<PostsPage />} />
-        <Route path="/post/:postId" element={<PostDetail />} />
-      </Routes>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<PostsPage />} />
+                <Route path="/post/:postId" element={<PostDetail />} />
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App;
