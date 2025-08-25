@@ -37,7 +37,11 @@ const PostsPage = () => {
             ) : (
                 <div className="posts-grid">
                     {posts.map((post) => (
-                        <div key={post.id} style={{ cursor: 'pointer' }} onClick={() => navigate(`/post/${post.id}`)}>
+                        <div
+                            key={post.id}
+                            style={{ cursor: 'pointer' }}
+                            onClick={() => navigate(`/post/${post.id}`)}
+                        >
                             <PostCard
                                 id={post.id}
                                 avatar={post.avatar}

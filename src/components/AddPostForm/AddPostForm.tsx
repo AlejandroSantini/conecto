@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form';
 import { useState, useRef, useEffect } from 'react';
 import { createPost } from '../../service/postsService';
 
-
 type FormValues = {
     name: string;
     avatar?: string;
