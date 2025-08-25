@@ -1,5 +1,5 @@
 .posts-container {
-    min-width: 80vw;
+    margin-top: 1.5rem;
     min-height: 100vh;
     max-width: 1200px;
 }
@@ -18,4 +18,8 @@
     margin: 0 auto;
     display: grid;
     gap: 1.5rem;
+
+    @media screen and (max-width: 640px) {
+        width: 90vw;
+    }
 }

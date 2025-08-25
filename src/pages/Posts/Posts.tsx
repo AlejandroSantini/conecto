@@ -4,7 +4,7 @@ import type { Post } from '../../types/index.ts';
 import PostCard from '../../components/PostCard/PostCard.tsx';
 import { useNavigate } from 'react-router-dom';
 import AddPostForm from '../../components/AddPostForm/AddPostForm.tsx';
-import PostsSkeleton from './PostsSkeletons/PostsSkeleton.tsx';
+import PostsSkeleton from '../../components/Skeletons/PostsSkeletons/PostsSkeleton.tsx';
 import './Posts.scss';
 
 const PostsPage = () => {
@@ -31,7 +31,7 @@ const PostsPage = () => {
 
     return (
         <div className="posts-container">
-            <AddPostForm onPostCreated={fetchPosts} />
+            <AddPostForm onPostCreated={fetchPosts} loading={loading} />
             {loading ? (
                 <PostsSkeleton />
             ) : (

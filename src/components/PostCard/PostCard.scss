@@ -1,14 +1,23 @@
 .card {
     background: #22303d;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.06);
     padding: 1.5rem;
     transition: box-shadow 0.2s;
+
     &:hover {
-        box-shadow: 0 8px 32px 0 rgba(200, 200, 200, 0.12);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
     }
-    @media (min-width: 640px) {
-        flex-direction: row;
+
+    @media screen and (max-width: 640px) {
+        padding: 1rem 0.8rem;
+
+        .title {
+            font-size: 1rem !important;
+        }
+        p {
+            font-size: 0.875rem !important;
+        }
     }
 
     .header {
@@ -35,7 +44,6 @@
         font-weight: 600;
         text-align: left;
         color: #e1e1e1;
-        margin: 0.25rem;
     }
 
     p {

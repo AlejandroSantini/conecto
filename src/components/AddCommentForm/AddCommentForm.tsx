@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { createComment } from '../../service/postsService';
 import './AddCommentForm.scss';
@@ -6,16 +5,15 @@ import './AddCommentForm.scss';
 type CommentFormProps = {
     postId: string;
     onCommented: () => void;
+    loading: boolean;
 };
 
-const CommentForm = ({ postId, onCommented }: CommentFormProps) => {
+const CommentForm = ({ postId, onCommented, loading }: CommentFormProps) => {
     const { register, handleSubmit, reset, formState } = useForm<{ comment: string }>({
         mode: 'onChange',
     });
-    const [loading, setLoading] = useState(false);
 
     const onSubmit = async (data: { comment: string }) => {
-        setLoading(true);
         try {
             await createComment(postId, {
                 name: 'Anon',
@@ -27,8 +25,6 @@ const CommentForm = ({ postId, onCommented }: CommentFormProps) => {
             onCommented();
         } catch (error) {
             alert(error);
-        } finally {
-            setLoading(false);
         }
     };
 

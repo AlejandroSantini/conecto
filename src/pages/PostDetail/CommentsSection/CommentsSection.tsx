@@ -1,5 +1,6 @@
 import CommentForm from '../../../components/AddCommentForm/AddCommentForm';
 import CommentCard from '../../../components/CommentCard/CommentCard';
+import CommentsSkeleton from '../../../components/Skeletons/CommentsSkeleton/CommentsSkeleton';
 import type { Comment } from '../../../types';
 import './CommentsSection.scss';
 
@@ -8,14 +9,23 @@ interface CommentsSectionProps {
     comments: Comment[];
     onCommented: () => void;
     onDelete: (commentId: string) => void;
+    loading: boolean;
 }
 
-const CommentsSection = ({ postId, comments, onCommented, onDelete }: CommentsSectionProps) => (
+const CommentsSection = ({
+    postId,
+    comments,
+    onCommented,
+    onDelete,
+    loading,
+}: CommentsSectionProps) => (
     <div className="comments-section">
         <h3>Comentarios</h3>
-        <CommentForm postId={postId} onCommented={onCommented} />
+        <CommentForm postId={postId} onCommented={onCommented} loading={loading} />
         <div className="comments-list">
-            {comments.length === 0 ? (
+            {loading ? (
+                <CommentsSkeleton />
+            ) : comments.length === 0 ? (
                 <p className="no-comments">No hay comentarios aún.</p>
             ) : (
                 comments.map((comment) => (

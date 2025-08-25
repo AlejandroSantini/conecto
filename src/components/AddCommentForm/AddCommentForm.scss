@@ -6,6 +6,10 @@
     margin-bottom: 2rem;
     margin-top: 1.5rem;
 
+    @media screen and (max-width: 640px) {
+        padding: 1rem 0.8rem;
+    }
+
     h3 {
         color: #e1e1e1;
         font-size: 1.3rem;

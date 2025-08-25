@@ -8,6 +8,10 @@
     flex-direction: column;
     gap: 1.5rem;
 
+    @media screen and (max-width: 640px) {
+        padding: 1rem 0.8rem;
+    }
+
     .header {
         display: flex;
         justify-content: space-between;
@@ -17,7 +21,7 @@
         .header-left {
             display: flex;
             align-items: start;
-            gap: 2rem;
+            gap: 1rem;
         }
 
         .avatar {

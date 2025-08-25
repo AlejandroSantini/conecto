@@ -13,9 +13,10 @@ type FormValues = {
 
 type AddPostFormProps = {
     onPostCreated: () => void;
+    loading: boolean;
 };
 
-const AddPostForm = ({ onPostCreated }: AddPostFormProps) => {
+const AddPostForm = ({ onPostCreated, loading }: AddPostFormProps) => {
     const { register, handleSubmit, reset, watch, formState } = useForm<FormValues>({
         mode: 'onChange',
     });
@@ -71,15 +72,28 @@ const AddPostForm = ({ onPostCreated }: AddPostFormProps) => {
                         style={{ display: 'none' }}
                         {...register('avatarFile')}
                         ref={fileInputRef}
+                        disabled={loading}
                     />
                 </div>
                 <div className="input-group">
-                    <input placeholder="Name" {...register('name', { required: true })} />
-                    <input placeholder="Title" {...register('title', { required: true })} />
+                    <input
+                        placeholder="Name"
+                        disabled={loading}
+                        {...register('name', { required: true })}
+                    />
+                    <input
+                        placeholder="Title"
+                        disabled={loading}
+                        {...register('title', { required: true })}
+                    />
                 </div>
             </div>
-            <textarea placeholder="Content" {...register('content', { required: true })} />
-            <button className="btn-primary" disabled={!formState.isValid} type="submit">
+            <textarea
+                placeholder="Content"
+                disabled={loading}
+                {...register('content', { required: true })}
+            />
+            <button className="btn-primary" disabled={!formState.isValid || loading} type="submit">
                 Publicar
             </button>
         </form>
