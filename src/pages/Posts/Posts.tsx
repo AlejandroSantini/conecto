@@ -5,7 +5,7 @@ import PostCard from '../../components/PostCard/PostCard.tsx';
 import { useNavigate } from 'react-router-dom';
 import AddPostForm from '../../components/AddPostForm/AddPostForm.tsx';
 import PostsSkeleton from './PostsSkeletons/PostsSkeleton.tsx';
-import './Posts1.scss';
+import './Posts.scss';
 
 const PostsPage = () => {
     const [posts, setPosts] = useState<Post[]>([]);
