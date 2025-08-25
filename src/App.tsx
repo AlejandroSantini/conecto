@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import PostsPage from './pages/Posts/Test';
-import PostDetail from './pages/PostDetail/Test';
+import PostsPage from './pages/Posts/Posts';
+import PostDetail from './pages/PostDetail/PostDetail';
 
 function App() {
     return (
