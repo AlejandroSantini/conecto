@@ -25,14 +25,16 @@ const PostDetailCard = ({ post }: PostDetailCardProps) => {
     return (
         <div className="post-detail-card">
             <div className="header">
-                <img className="avatar" src={post.avatar} alt={post.name} />
-                <div className="info">
-                    <h2 className="title">{post.title}</h2>
-                    <span className="author">{post.name}</span>
-                    <span className="date">{new Date(post.createdAt).toLocaleString()}</span>
+                <div className="header-left">
+                    <img className="avatar" src={post.avatar} alt={post.name} />
+                    <div className="author-container">
+                        <span className="author">{post.name}</span>
+                        <span className="date">{new Date(post.createdAt).toLocaleString()}</span>
+                    </div>
                 </div>
                 <DeleteButton onClick={handleDeletePost} />
             </div>
+            <h2 className="title">{post.title}</h2>
             <div className="content">{post.content}</div>
         </div>
     );

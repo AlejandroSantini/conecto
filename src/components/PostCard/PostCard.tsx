@@ -24,14 +24,16 @@ const handleDeletePost = async (id: string) => {
 const PostCard = ({ id, avatar, name, title, content, createdAt }: PostCardProps) => (
     <div className="card">
         <div className="header">
-            <img className="avatar" src={avatar} alt={name} />
-            <h3>{title}</h3>
+            <div className="header-left">
+                <img className="avatar" src={avatar} alt={name} />
+                <div className="author-container">
+                    <span className="author">{name}</span>
+                    <span className="date">{new Date(createdAt).toLocaleString()}</span>
+                </div>
+            </div>
             <DeleteButton onClick={() => handleDeletePost(id)} />
         </div>
-        <div className="footer">
-            <span className="author">{name}</span>
-            <span className="date">{new Date(createdAt).toLocaleString()}</span>
-        </div>
+        <h3 className="title">{title}</h3>
         <div className="content">
             <p>{content}</p>
         </div>

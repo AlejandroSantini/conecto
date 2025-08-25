@@ -9,13 +9,19 @@ interface CommentCardProps {
 
 const CommentCard = ({ comment, onDelete }: CommentCardProps) => (
     <div className="comment-card">
-        <img className="avatar" src={comment.avatar} alt={comment.name} />
+        <div className="header">
+          <div className="header-left">
+            <img className="avatar" src={comment.avatar} alt={comment.name} />
+            <div className="author-container">
+                <span className="author">{comment.name}</span>
+                <span className="date">{new Date(comment.createdAt).toLocaleString()}</span>
+            </div>
+          </div>
+          <DeleteButton onClick={() => onDelete(comment.id)} />
+        </div>
         <div className="comment-content">
-            <span className="author">{comment.name}</span>
-            <span className="date">{new Date(comment.createdAt).toLocaleString()}</span>
             <p>{comment.content}</p>
         </div>
-        <DeleteButton onClick={() => onDelete(comment.id)} />
     </div>
 );
 
