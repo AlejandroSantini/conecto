@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PostsPage from './pages/Posts/Posts';
-import PostDetail from './pages/PostDetail/sdfs';
+import PostDetail from './pages/PostDetails/PostDetails';
 
 function App() {
     return (

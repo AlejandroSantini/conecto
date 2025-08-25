@@ -6,7 +6,7 @@ import PostDetailCard from './PostDetailCard/PostDetailCard';
 import CommentsSection from './CommentsSection/CommentsSection';
 import PostDetailSkeleton from './PostDetailSkeleton/PostDetailSkeleton';
 import DetailHeaderBar from '../../components/BackHeaderBar/BackHeaderBar';
-import './PostDetail.scss';
+import './PostDetails.scss';
 
 const PostDetail = () => {
     const { postId } = useParams();
