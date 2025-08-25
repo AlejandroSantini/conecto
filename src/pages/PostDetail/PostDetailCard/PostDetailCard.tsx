@@ -18,6 +18,7 @@ const PostDetailCard = ({ post }: PostDetailCardProps) => {
       navigate('/');
     } catch (error) {
       alert(error);
+      console.error('Error deleting post:', error);
     }
   };
 

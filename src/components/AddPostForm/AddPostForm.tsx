@@ -81,7 +81,7 @@ const AddPostForm = ({ onPostCreated }: AddPostFormProps) => {
             </div>
             <textarea placeholder="Content" {...register('content', { required: true })} />
             <button className="btn-primary" disabled={!formState.isValid} type="submit">
-                Create post
+                Publicar
             </button>
         </form>
     );

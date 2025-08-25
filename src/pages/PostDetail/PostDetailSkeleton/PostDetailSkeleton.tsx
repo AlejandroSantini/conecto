@@ -15,7 +15,7 @@ const PostDetailSkeleton = () => (
     </div>
     <div className="comments-section-skeleton">
       <div className="comment-title-skeleton" />
-      {[...Array(2)].map((_, i) => (
+      {[...Array(3)].map((_, i) => (
         <div className="comment-card-skeleton" key={i}>
           <div className="avatar-skeleton" />
           <div className="comment-content-skeleton">

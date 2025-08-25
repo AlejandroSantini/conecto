@@ -31,7 +31,6 @@ const PostsPage = () => {
 
     return (
         <div className="posts-container">
-            <h1 className="posts-title">Posts</h1>
             <AddPostForm onPostCreated={fetchPosts} />
             {loading ? (
                 <PostsSkeleton />

@@ -10,6 +10,7 @@ type PostCardProps = {
     content: string;
     createdAt: string;
 };
+
 const handleDeletePost = async (id: string) => {
     if (!window.confirm('¿Seguro que quieres eliminar este post?')) return;
     try {
@@ -27,12 +28,12 @@ const PostCard = ({ id, avatar, name, title, content, createdAt }: PostCardProps
             <h3>{title}</h3>
             <DeleteButton onClick={() => handleDeletePost(id)} />
         </div>
+        <div className="footer">
+            <span className="author">{name}</span>
+            <span className="date">{new Date(createdAt).toLocaleString()}</span>
+        </div>
         <div className="content">
             <p>{content}</p>
-            <div className="footer">
-                <span className="author">By: {name}</span>
-                <span className="date">{new Date(createdAt).toLocaleString()}</span>
-            </div>
         </div>
     </div>
 );

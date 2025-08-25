@@ -1,6 +1,7 @@
 .posts-container {
+    min-width: 80vw;
     min-height: 100vh;
-    padding: 2rem 1rem;
+    max-width: 1200px;
 }
 
 .posts-title {
@@ -12,7 +13,8 @@
 }
 
 .posts-grid {
-    max-width: 640px;
+    width: 80vw;
+    max-width: 1200px;
     margin: 0 auto;
     display: grid;
     gap: 1.5rem;
