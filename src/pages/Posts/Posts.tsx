@@ -10,6 +10,7 @@ import './Posts.scss';
 const PostsPage = () => {
     const [posts, setPosts] = useState<Post[]>([]);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchPosts();
@@ -26,11 +27,13 @@ const PostsPage = () => {
         } catch (error) {
             console.error('Error fetching posts:', error);
         } finally {
-            setLoading(false);
+            setLoading(true);
         }
     };
 
-    const navigate = useNavigate();
+    const deletePost = (postId: string) => {
+        setPosts((prev) => prev.filter((p) => p.id !== postId));
+    };
 
     return (
         <div className="posts-container">
@@ -52,6 +55,7 @@ const PostsPage = () => {
                                 title={post.title}
                                 content={post.content}
                                 createdAt={post.createdAt}
+                                onDeleted={() => deletePost(post.id)}
                             />
                         </div>
                     ))}

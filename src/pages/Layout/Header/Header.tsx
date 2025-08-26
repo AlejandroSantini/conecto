@@ -4,7 +4,7 @@ import { FaChevronLeft } from 'react-icons/fa';
 const Header = () => {
     const navigate = useNavigate();
     return (
-        <div className="header">
+        <div className="header-main">
             {window.location.pathname !== '/' && (
                 <button className="back-btn" onClick={() => navigate(-1)} title="Volver">
                     <FaChevronLeft size={20} className="chevron" />
