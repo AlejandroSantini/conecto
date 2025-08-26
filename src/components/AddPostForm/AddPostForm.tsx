@@ -77,19 +77,19 @@ const AddPostForm = ({ onPostCreated, loading }: AddPostFormProps) => {
                 </div>
                 <div className="input-group">
                     <input
-                        placeholder="Name"
+                        placeholder="Nombre"
                         disabled={loading}
                         {...register('name', { required: true })}
                     />
                     <input
-                        placeholder="Title"
+                        placeholder="Titulo"
                         disabled={loading}
                         {...register('title', { required: true })}
                     />
                 </div>
             </div>
             <textarea
-                placeholder="Content"
+                placeholder="Contenido..."
                 disabled={loading}
                 {...register('content', { required: true })}
             />

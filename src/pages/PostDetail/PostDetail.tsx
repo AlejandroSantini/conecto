@@ -5,7 +5,6 @@ import type { Post, Comment } from '../../types';
 import PostDetailCard from './PostDetailCard/PostDetailCard';
 import CommentsSection from './CommentsSection/CommentsSection';
 import PostDetailSkeleton from '../../components/Skeletons/PostDetailSkeleton/PostDetailSkeleton';
-import DetailHeaderBar from '../../components/BackHeaderBar/BackHeaderBar';
 import './PostDetail.scss';
 
 const PostDetail = () => {
@@ -57,7 +56,6 @@ const PostDetail = () => {
 
     return (
         <div className="post-detail">
-            <DetailHeaderBar />
             {loading || !post ? <PostDetailSkeleton /> : <PostDetailCard post={post} />}
             {postId && (
                 <CommentsSection
