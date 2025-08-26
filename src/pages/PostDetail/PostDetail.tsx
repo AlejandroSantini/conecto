@@ -36,6 +36,7 @@ const PostDetail = () => {
     const fetchComments = async () => {
         try {
             const commentsData = await getComments(postId!);
+
             setComments(commentsData);
         } catch (error) {
             console.error('Error fetching comments:', error);
@@ -60,7 +61,9 @@ const PostDetail = () => {
             {postId && (
                 <CommentsSection
                     postId={postId}
-                    comments={comments}
+                    comments={[...comments].sort(
+                        (a, b) => b.createdAt?.localeCompare(a.createdAt) ?? 0
+                    )}
                     onCommented={fetchComments}
                     onDelete={handleDeleteComment}
                     loading={loading}

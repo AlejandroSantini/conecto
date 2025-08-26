@@ -19,7 +19,10 @@ const PostsPage = () => {
         setLoading(true);
         try {
             const data = await getPosts();
-            setPosts(data);
+
+            const sorted = [...data].sort((a, b) => b.createdAt?.localeCompare(a.createdAt) ?? 0);
+
+            setPosts(sorted);
         } catch (error) {
             console.error('Error fetching posts:', error);
         } finally {
