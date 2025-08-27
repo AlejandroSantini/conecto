@@ -1,5 +1,5 @@
-import type { Comment } from '../../types';
-import DeleteButton from '../DeleteButton/DeleteButton';
+import DeleteButton from '../../../../components/DeleteButton/DeleteButton';
+import type { Comment } from '../../../../types/posts';
 import './CommentCard.scss';
 
 interface CommentCardProps {

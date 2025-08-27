@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getSinglePost, getComments, deleteComment } from '../../service/postsService';
-import type { Post, Comment } from '../../types';
 import PostDetailCard from './PostDetailCard/PostDetailCard';
 import CommentsSection from './CommentsSection/CommentsSection';
 import PostDetailSkeleton from '../../components/Skeletons/PostDetailSkeleton/PostDetailSkeleton';
+import type { Post, Comment } from '../../types/posts';
 import './PostDetail.scss';
 
 const PostDetail = () => {
@@ -47,8 +47,10 @@ const PostDetail = () => {
 
     const handleDeleteComment = async (commentId: string) => {
         if (!window.confirm('¿Eliminar este comentario?')) return;
+        
         try {
             await deleteComment(postId!, commentId);
+
             setComments((prev) => prev.filter((c) => c.id !== commentId));
         } catch (error) {
             alert(error);

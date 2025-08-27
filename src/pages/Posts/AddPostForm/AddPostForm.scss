@@ -69,19 +69,23 @@
             border: 4px solid #bfdbfe;
         }
 
+        input {
+            display: none;
+        }
+
         .avatar-placeholder {
             font-size: 2rem;
             color: #9a9a9a;
         }
-    }
 
-    textarea {
-        min-height: 80px;
-    }
-
-    .form-error {
-        color: #e11d48;
-        font-size: 0.95rem;
-        text-align: center;
+        textarea {
+            min-height: 80px;
+        }
+    
+        .form-error {
+            color: #e11d48;
+            font-size: 0.95rem;
+            text-align: center;
+        }
     }
 }

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { Post, Comment } from '../types';
+import type { Post, Comment } from '../types/posts';
 
 const API_URL = import.meta.env.VITE_API_URL;
 

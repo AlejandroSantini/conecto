@@ -1,7 +1,7 @@
-import './AddPostForm.scss';
 import { useForm } from 'react-hook-form';
 import { useState, useRef, useEffect } from 'react';
-import { createPost } from '../../service/postsService';
+import { createPost } from '../../../service/postsService';
+import './AddPostForm.scss';
 
 type FormValues = {
     name: string;
@@ -21,9 +21,8 @@ const AddPostForm = ({ onPostCreated, loading }: AddPostFormProps) => {
         mode: 'onChange',
     });
     const fileInputRef = useRef<HTMLInputElement>(null);
-
-    const avatarFile = watch('avatarFile');
     const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
+    const avatarFile = watch('avatarFile');
 
     useEffect(() => {
         if (avatarFile && avatarFile.length > 0) {
@@ -37,15 +36,18 @@ const AddPostForm = ({ onPostCreated, loading }: AddPostFormProps) => {
 
     const onSubmit = async (data: FormValues) => {
         let avatarUrl = data.avatar;
+
         if (data.avatarFile && data.avatarFile.length > 0) {
             avatarUrl = URL.createObjectURL(data.avatarFile[0]);
         }
+
         try {
             await createPost({
                 ...data,
                 avatar: avatarUrl,
                 createdAt: new Date().toISOString(),
             });
+
             reset();
             onPostCreated();
         } catch (error) {
@@ -69,7 +71,6 @@ const AddPostForm = ({ onPostCreated, loading }: AddPostFormProps) => {
                     <input
                         type="file"
                         accept="image/*"
-                        style={{ display: 'none' }}
                         {...register('avatarFile')}
                         ref={fileInputRef}
                         disabled={loading}

@@ -1,5 +1,5 @@
-import { deletePost } from '../../service/postsService';
-import DeleteButton from '../DeleteButton/DeleteButton';
+import { deletePost } from '../../../service/postsService';
+import DeleteButton from '../../../components/DeleteButton/DeleteButton';
 import './PostCard.scss';
 
 type PostCardProps = {
@@ -13,11 +13,14 @@ type PostCardProps = {
 };
 
 const PostCard = ({ id, avatar, name, title, content, createdAt, onDeleted }: PostCardProps) => {
+    
     const handleDelete = async (e: React.MouseEvent) => {
         e.stopPropagation();
         if (!window.confirm('¿Seguro que quieres eliminar este post?')) return;
+
         try {
             await deletePost(id);
+            
             if (onDeleted) onDeleted();
         } catch (error) {
             alert(error);

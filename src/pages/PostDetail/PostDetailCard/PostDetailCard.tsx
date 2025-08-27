@@ -1,8 +1,8 @@
-import './PostDetailCard.scss';
-import type { Post } from '../../../types';
 import { deletePost } from '../../../service/postsService';
 import { useNavigate } from 'react-router-dom';
 import DeleteButton from '../../../components/DeleteButton/DeleteButton';
+import type { Post } from '../../../types/posts';
+import './PostDetailCard.scss';
 
 interface PostDetailCardProps {
     post: Post;
@@ -13,6 +13,7 @@ const PostDetailCard = ({ post }: PostDetailCardProps) => {
 
     const handleDeletePost = async () => {
         if (!window.confirm('¿Seguro que quieres eliminar este post?')) return;
+
         try {
             await deletePost(post.id);
             navigate('/');

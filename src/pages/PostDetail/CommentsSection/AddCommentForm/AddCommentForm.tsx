@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { createComment } from '../../service/postsService';
+import { createComment } from '../../../../service/postsService';
 import './AddCommentForm.scss';
 
 type CommentFormProps = {

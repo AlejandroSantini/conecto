@@ -1,7 +1,7 @@
-import CommentForm from '../../../components/AddCommentForm/AddCommentForm';
-import CommentCard from '../../../components/CommentCard/CommentCard';
+import CommentForm from './AddCommentForm/AddCommentForm';
+import CommentCard from './CommentCard/CommentCard';
 import CommentsSkeleton from '../../../components/Skeletons/CommentsSkeleton/CommentsSkeleton';
-import type { Comment } from '../../../types';
+import type { Comment } from '../../../types/posts';
 import './CommentsSection.scss';
 
 interface CommentsSectionProps {
@@ -25,7 +25,7 @@ const CommentsSection = ({
         <div className="comments-list">
             {loading ? (
                 <CommentsSkeleton />
-            ) : comments.length === 0 ? (
+            ) : comments?.length === 0 ? (
                 <p className="no-comments">No hay comentarios aún.</p>
             ) : (
                 comments.map((comment) => (

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { getPosts } from '../../service/postsService.tsx';
-import type { Post } from '../../types/index.ts';
-import PostCard from '../../components/PostCard/PostCard.tsx';
 import { useNavigate } from 'react-router-dom';
-import AddPostForm from '../../components/AddPostForm/AddPostForm.tsx';
+import PostCard from './PostCard/PostCard.tsx';
+import AddPostForm from './AddPostForm/AddPostForm.tsx';
 import PostsSkeleton from '../../components/Skeletons/PostsSkeletons/PostsSkeleton.tsx';
+import type { Post } from '../../types/posts.ts';
 import './Posts.scss';
 
 const PostsPage = () => {
@@ -27,7 +27,7 @@ const PostsPage = () => {
         } catch (error) {
             console.error('Error fetching posts:', error);
         } finally {
-            setLoading(true);
+            setLoading(false);
         }
     };
 
@@ -45,7 +45,6 @@ const PostsPage = () => {
                     {posts.map((post) => (
                         <div
                             key={post.id}
-                            style={{ cursor: 'pointer' }}
                             onClick={() => navigate(`/post/${post.id}`)}
                         >
                             <PostCard
