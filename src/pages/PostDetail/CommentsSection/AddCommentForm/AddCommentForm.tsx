@@ -10,17 +10,17 @@ type CommentFormProps = {
 };
 
 const CommentForm = ({ postId, parentId, onCommented, loading }: CommentFormProps) => {
-    const { register, handleSubmit, reset, formState } = useForm<{ comment: string }>({
+    const { register, handleSubmit, reset, formState } = useForm<{ comment: string, name: string }>({
         mode: 'onChange',
     });
 
-    const onSubmit = async (data: { comment: string }) => {
+    const onSubmit = async (data: { name: string, comment: string }) => {
         try {
             await createComment(postId, {
-                name: 'Anon',
+                name: data.name ? data.name : 'Anónimo',
                 content: data.comment,
                 createdAt: new Date().toISOString(),
-                parentId: parentId,
+                parentId: parentId ? parentId : null,
             });
             reset();
             onCommented();
@@ -31,6 +31,11 @@ const CommentForm = ({ postId, parentId, onCommented, loading }: CommentFormProp
 
     return (
         <form className="comment-form" onSubmit={handleSubmit(onSubmit)}>
+            <input
+                placeholder="Nombre"
+                {...register('name', { required: false, minLength: 1 })}
+                disabled={loading}
+            />
             <textarea
                 placeholder="Escribe un comentario..."
                 {...register('comment', { required: true, minLength: 1 })}
