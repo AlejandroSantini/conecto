@@ -1,3 +1,19 @@
-
 node_modules/
-.env
+.env*
+
+# Cypress
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+*.local
+docker-compose.override.yml
+
+# IDEs
+.vscode/
+.idea/

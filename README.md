@@ -1,69 +1,64 @@
-# React + TypeScript + Vite
+# Social-Network-Conecta
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Red social minimalista construida con React, TypeScript y Vite. Permite crear publicaciones, comentar y responder comentarios de forma anidada (threaded comments). Incluye skeleton loaders, diseño responsive, despliegue con Docker/Nginx y tests end-to-end con Cypress.
 
-Currently, two official plugins are available:
+## Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Publicaciones y comentarios anidados (hilos de conversación)
+- UI modular y componentes reutilizables (SCSS, React)
+- Skeleton loaders para mejor UX
+- Responsive design
+- Deploy listo para Docker/Nginx
+- Tests automáticos con Cypress
 
-## Expanding the ESLint configuration
+## Requisitos
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Node.js >= 18
+- npm >= 9
+- Docker (opcional para deploy)
 
-```js
-export default tseslint.config([
-    globalIgnores(['dist']),
-    {
-        files: ['**/*.{ts,tsx}'],
-        extends: [
-            // Other configs...
+## Instalación y uso local
 
-            // Remove tseslint.configs.recommended and replace with this
-            ...tseslint.configs.recommendedTypeChecked,
-            // Alternatively, use this for stricter rules
-            ...tseslint.configs.strictTypeChecked,
-            // Optionally, add this for stylistic rules
-            ...tseslint.configs.stylisticTypeChecked,
+1. Instala dependencias:
+   ```sh
+   npm install
+   ```
+2. Inicia el servidor de desarrollo:
+   ```sh
+   npm run dev
+   ```
+3. Abre [http://localhost:5173](http://localhost:5173) en tu navegador.
 
-            // Other configs...
-        ],
-        languageOptions: {
-            parserOptions: {
-                project: ['./tsconfig.node.json', './tsconfig.app.json'],
-                tsconfigRootDir: import.meta.dirname,
-            },
-            // other options...
-        },
-    },
-]);
-```
+## Tests end-to-end (Cypress)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. Asegúrate de que la app esté corriendo (`npm run dev`).
+2. En otra terminal, ejecuta:
+   ```sh
+   npx cypress open
+   ```
+   o para modo headless:
+   ```sh
+   npx cypress run
+   ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+## Deploy con Docker
 
-export default tseslint.config([
-    globalIgnores(['dist']),
-    {
-        files: ['**/*.{ts,tsx}'],
-        extends: [
-            // Other configs...
-            // Enable lint rules for React
-            reactX.configs['recommended-typescript'],
-            // Enable lint rules for React DOM
-            reactDom.configs.recommended,
-        ],
-        languageOptions: {
-            parserOptions: {
-                project: ['./tsconfig.node.json', './tsconfig.app.json'],
-                tsconfigRootDir: import.meta.dirname,
-            },
-            // other options...
-        },
-    },
-]);
-```
+1. Construye la imagen:
+   ```sh
+   docker build -t social-red .
+   ```
+2. Corre el contenedor:
+   ```sh
+   docker run -p 80:80 social-red
+   ```
+3. Accede a la app en [http://localhost](http://localhost)
+
+## Estructura principal
+
+- `src/` - Código fuente (componentes, páginas, servicios, tipos)
+- `public/` - Archivos estáticos
+- `cypress/` - Tests end-to-end
+- `Dockerfile`, `nginx.conf` - Configuración para deploy
+
+---
+Hecho con ❤️ por Alejandro Santini
