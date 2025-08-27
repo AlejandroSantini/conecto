@@ -4,11 +4,12 @@ import './AddCommentForm.scss';
 
 type CommentFormProps = {
     postId: string;
+    parentId?: string;
     onCommented: () => void;
     loading: boolean;
 };
 
-const CommentForm = ({ postId, onCommented, loading }: CommentFormProps) => {
+const CommentForm = ({ postId, parentId, onCommented, loading }: CommentFormProps) => {
     const { register, handleSubmit, reset, formState } = useForm<{ comment: string }>({
         mode: 'onChange',
     });
@@ -19,7 +20,7 @@ const CommentForm = ({ postId, onCommented, loading }: CommentFormProps) => {
                 name: 'Anon',
                 content: data.comment,
                 createdAt: new Date().toISOString(),
-                parentId: postId,
+                parentId: parentId,
             });
             reset();
             onCommented();

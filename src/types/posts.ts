@@ -9,7 +9,7 @@ export interface Post {
 
 export interface Comment {
     id: string;
-    parentId: string;
+    parentId: string | null;
     name: string;
     avatar: string;
     content: string;

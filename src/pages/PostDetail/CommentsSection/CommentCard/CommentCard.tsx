@@ -1,13 +1,15 @@
 import DeleteButton from '../../../../components/DeleteButton/DeleteButton';
+import CommentButton from '../../../../components/CommentButton/CommentButton';
 import type { Comment } from '../../../../types/posts';
 import './CommentCard.scss';
 
 interface CommentCardProps {
     comment: Comment;
     onDelete: (id: string) => void;
+    onReply?: (id: string) => void;
 }
 
-const CommentCard = ({ comment, onDelete }: CommentCardProps) => (
+const CommentCard = ({ comment, onDelete, onReply }: CommentCardProps) => (
     <div className="comment-card">
         <div className="header">
             <div className="header-left">
@@ -22,6 +24,9 @@ const CommentCard = ({ comment, onDelete }: CommentCardProps) => (
         <div className="comment-content">
             <p>{comment.content}</p>
         </div>
+        <CommentButton
+            onClick={() => onReply && onReply(comment.id)}
+        />
     </div>
 );
 
