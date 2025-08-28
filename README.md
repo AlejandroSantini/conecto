@@ -1,4 +1,4 @@
-# Social-Network-Conecta
+# Social-Network-Conecto
 
 Red social minimalista construida con React, TypeScript y Vite. Permite crear publicaciones, comentar y responder comentarios de forma anidada (threaded comments). Incluye skeleton loaders, diseño responsive, despliegue con Docker/Nginx y tests end-to-end con Cypress.
 
