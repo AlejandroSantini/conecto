@@ -1,12 +1,10 @@
 import { useForm } from 'react-hook-form';
-import { useState, useRef, useEffect } from 'react';
 import { createPost } from '../../../service/postsService';
 import './AddPostForm.scss';
 
 type FormValues = {
     name: string;
     avatar?: string;
-    avatarFile?: FileList;
     title: string;
     content: string;
 };
@@ -17,37 +15,16 @@ type AddPostFormProps = {
 };
 
 const AddPostForm = ({ onPostCreated, loading }: AddPostFormProps) => {
-    const { register, handleSubmit, reset, watch, formState } = useForm<FormValues>({
+    const { register, handleSubmit, reset, formState } = useForm<FormValues>({
         mode: 'onChange',
     });
-    const fileInputRef = useRef<HTMLInputElement>(null);
-    const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
-    const avatarFile = watch('avatarFile');
-
-    useEffect(() => {
-        if (avatarFile && avatarFile.length > 0) {
-            const url = URL.createObjectURL(avatarFile[0]);
-            setAvatarPreview(url);
-            return () => URL.revokeObjectURL(url);
-        } else {
-            setAvatarPreview(null);
-        }
-    }, [avatarFile]);
 
     const onSubmit = async (data: FormValues) => {
-        let avatarUrl = data.avatar;
-
-        if (data.avatarFile && data.avatarFile.length > 0) {
-            avatarUrl = URL.createObjectURL(data.avatarFile[0]);
-        }
-
         try {
             await createPost({
                 ...data,
-                avatar: avatarUrl,
                 createdAt: new Date().toISOString(),
             });
-
             reset();
             onPostCreated();
         } catch (error) {
@@ -59,24 +36,13 @@ const AddPostForm = ({ onPostCreated, loading }: AddPostFormProps) => {
     return (
         <form className="add-post-card" onSubmit={handleSubmit(onSubmit)}>
             <div className="img-input-group">
-                <div className="avatar-upload">
-                    <label>Avatar</label>
-                    <button type="button" onClick={() => fileInputRef.current?.click()}>
-                        {avatarPreview ? (
-                            <img src={avatarPreview} alt="avatar preview" className="avatar-img" />
-                        ) : (
-                            <span className="avatar-placeholder">+</span>
-                        )}
-                    </button>
-                    <input
-                        type="file"
-                        accept="image/*"
-                        {...register('avatarFile')}
-                        ref={fileInputRef}
-                        disabled={loading}
-                    />
-                </div>
                 <div className="input-group">
+                    <input
+                        placeholder="URL Avatar (opcional)"
+                        disabled={loading}
+                        {...register('avatar', { required: false })}
+                        style={{ marginBottom: 8 }}
+                    />
                     <input
                         placeholder="Nombre"
                         disabled={loading}
