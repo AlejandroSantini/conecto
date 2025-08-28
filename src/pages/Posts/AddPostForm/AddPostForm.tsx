@@ -41,7 +41,6 @@ const AddPostForm = ({ onPostCreated, loading }: AddPostFormProps) => {
                         placeholder="URL Avatar (opcional)"
                         disabled={loading}
                         {...register('avatar', { required: false })}
-                        style={{ marginBottom: 8 }}
                     />
                     <input
                         placeholder="Nombre"
